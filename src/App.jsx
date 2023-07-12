@@ -1,16 +1,16 @@
-import Header from "./components/Header/Header";
-import Home from "./components/Home/Home";
+import Cards from "./components/Cards/Cards";
 import Pagination from "./components/Pagination/Pagination";
 import { useEffect, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
+import Filters from "./components/Filters/Filters";
 
 function App() {
-  let [pageNumber, setPageNumber] = useState(0);
+  let [pageNumber, setPageNumber] = useState(1);
   let [fetchedData, updateFechedData] = useState([]);
   let { info, results } = fetchedData;
+  console.log(pageNumber);
 
   let api = `https://rickandmortyapi.com/api/character/?page=${pageNumber}`;
-
   useEffect(() => {
     (async function () {
       let dataApi = await fetch(api).then((data) => data.json());
@@ -21,12 +21,22 @@ function App() {
   return (
     <>
       <div className="App">
-        <h1>
+        <h1 className="text-center ubuntu my-4">
           Rick and Morty <span className="text-primary">Wiki</span>
         </h1>
-        <div className="container">
-          <div className="row"></div>
+        <div className="container border border-secondary">
+          <div className="row border border-danger">
+            <div className="col-3 border border-primary">
+              <Filters/>
+            </div>
+            <div className="col-8 border border-success">
+              <div className="row border border-warning">
+                <Cards results={results}/>
+              </div>
+            </div>
+          </div>
         </div>
+        <Pagination pageNumber={pageNumber} setPageNumber={setPageNumber}/>
       </div>
     </>
   );

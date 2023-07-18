@@ -11,9 +11,9 @@ const Pagination = ({pageNumber,setPageNumber}) => {
   }
 
   return (
-    <div className="container">
+    <div className="container d-flex justify-content-center gap-5 ">
       <button onClick={prev}className="btn btn-primary">Prev</button>
-      <div className="badge btn-primary">{pageNumber}</div>
+      <button className="btn btn-primary">{pageNumber}</button>
       <button onClick={next} className="btn btn-primary">Next</button>
     </div>
   );

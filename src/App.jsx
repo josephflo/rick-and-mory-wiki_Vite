@@ -28,9 +28,7 @@ function App() {
         <SearchBar/>
         <div className="container border border-secondary">
           <div className="row border border-danger">
-            <div className="col-3 border border-primary">
               <Filters />
-            </div>
             <div className="col-8 border border-success">
               <div className="row border border-warning">
                 <Cards results={results} />
@@ -38,7 +36,7 @@ function App() {
             </div>
           </div>
         </div>
-        <Pagination pageNumber={pageNumber} setPageNumber={setPageNumber} />
+        <Pagination info={info} pageNumber={pageNumber} setPageNumber={setPageNumber} />
       </div>
     </>
   );
